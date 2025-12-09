@@ -1,6 +1,43 @@
 import streamlit as st
+import pandas as pd
+import plotly.express as px
 
-st.markdown("""# 🧠 Tablero Interactivo de Inteligencia de Negocios
+# -----------------------------------------------------------
+# CONFIGURACIÓN INICIAL
+# -----------------------------------------------------------
+st.set_page_config(
+    page_title="Tablero de Inteligencia de Negocios",
+    page_icon="📊",
+    layout="wide"
+)
+
+st.title("📊 Tablero Interactivo – Inteligencia de Negocios")
+st.caption("Universidad Panamericana · Campus CDMX")
+
+# -----------------------------------------------------------
+# CARGA DE DATOS
+# -----------------------------------------------------------
+@st.cache_data    # Python decorator
+def load_data():
+    url="https://docs.google.com/spreadsheets/d/1crZNfk8h7V-cG8AmPTTIRP63a-Nw32jd/edit?usp=sharing&ouid=103457517634340619188&rtpof=true&sd=true"
+    modified_url = url.replace('/edit?usp=sharing', '/export?format=xlsx')
+    all_sheets = pd.read_excel(modified_url, sheet_name=None)
+    return all_sheets['Switchbacks']
+
+df = load_data()
+
+# -----------------------------------------------------------
+# PESTAÑAS PRINCIPALES
+# -----------------------------------------------------------
+tab1, tab2, tab3 = st.tabs(["📈 Documentación General", "🔍 Datos", "📊 Gráficas"])
+
+# -----------------------------------------------------------
+# TAB 1: Documentación General
+# -----------------------------------------------------------
+with tab1:
+    st.subheader("Documentación general del tablero")
+
+    st.markdown("""# 🧠 Tablero Interactivo de Inteligencia de Negocios
 
 ## Universidad Panamericana · Campus Ciudad de México
 <img src="https://posgrados-panamericana.up.edu.mx/hs-fs/hubfs/logo%20posgrados%20con%20espacio.png?width=137&name=logo%20posgrados%20con%20espacio.png" width=150>
@@ -54,3 +91,24 @@ El dataset utilizado está pensado para que los estudiantes puedan:
 
 Si deseas cambiar el dataset, solo reemplázalo en la carpeta `data/` y asegúrate de ajustar el código si cambian los nombres de las columnas.""")
 
+
+
+# -----------------------------------------------------------
+# TAB 2: Comparaciones
+# -----------------------------------------------------------
+with tab2:
+    st.subheader("Dataset del ejercicio")
+
+    st.dataframe(df)
+
+# -----------------------------------------------------------
+# TAB 3: Resumen e Insights
+# -----------------------------------------------------------
+with tab3:
+    st.subheader("Visualizaciones")
+
+    st.write("Hola Mundo")
+
+    st.write("Insight sencillo basado en la columna seleccionada:")
+    mean_val = df[selected_column].mean()
+    st.info(f"El promedio de **{selected_column}** es {mean_val:.2f}.")
