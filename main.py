@@ -108,7 +108,3 @@ with tab3:
     st.subheader("Visualizaciones")
 
     st.write("Hola Mundo")
-
-    st.write("Insight sencillo basado en la columna seleccionada:")
-    mean_val = df[selected_column].mean()
-    st.info(f"El promedio de **{selected_column}** es {mean_val:.2f}.")
