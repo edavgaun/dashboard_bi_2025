@@ -1,7 +1,7 @@
 # 🧠 Tablero Interactivo de Inteligencia de Negocios
 
 ## Universidad Panamericana · Campus Ciudad de México
-<img src="https://posgrados-panamericana.up.edu.mx/hs-fs/hubfs/logo%20posgrados%20con%20espacio.png?width=137&name=logo%20posgrados%20con%20espacio.png" width=100>
+<img src="https://posgrados-panamericana.up.edu.mx/hs-fs/hubfs/logo%20posgrados%20con%20espacio.png?width=137&name=logo%20posgrados%20con%20espacio.png" width=150>
 
 Este repositorio contiene un tablero interactivo desarrollado para las actividades de la clase de **Inteligencia de Negocios**. Su propósito es ofrecer a los estudiantes una herramienta práctica para explorar datos, aplicar conceptos vistos en clase y comprender cómo se construye una solución analítica moderna usando Streamlit.
 
